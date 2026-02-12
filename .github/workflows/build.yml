@@ -10,38 +10,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Website-Repo (für Workflow + Deployment)
       - name: Checkout website repo
         uses: actions/checkout@v3
 
+      # 2. Content-Repo klonen
       - name: Checkout content repo
         uses: actions/checkout@v3
         with:
           repository: jasokann/lek-nrw-content
-          path: content-repo
+          path: site
 
+      # 3. Theme ins Content-Repo klonen
       - name: Checkout theme repo
         uses: actions/checkout@v3
         with:
           repository: jasokann/lek-nrw-theme
-          path: theme-repo
+          path: theme-temp
 
+      # 4. Theme in das richtige Verzeichnis verschieben
+      - name: Move theme into content repo
+        run: |
+          mkdir -p site/themes
+          rm -rf site/themes/lek-nrw-theme
+          mv theme-temp site/themes/lek-nrw-theme
+
+      # 5. Hugo installieren
       - name: Install Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.121.1"
           extended: true
 
-      - name: Copy theme
-        run: |
-          rm -rf themes/lek-nrw-theme
-          mkdir -p themes
-          cp -R theme-repo ./themes/lek-nrw-theme
-
+      # 6. Hugo im Content-Repo bauen
       - name: Build Hugo
-        run: hugo --minify
+        run: |
+          cd site
+          hugo --minify
 
+      # 7. Deployment (GitHub Pages)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./site/public
