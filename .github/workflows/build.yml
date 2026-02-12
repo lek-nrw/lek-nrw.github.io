@@ -31,11 +31,13 @@ jobs:
       # 4. Theme in das richtige Verzeichnis verschieben
       - name: Move theme into content repo
         run: |
-          ls -la site/themes/
-          ls -la theme-temp/
           mkdir -p site/themes
           rm -rf site/themes/lek-nrw-theme
           mv theme-temp site/themes/lek-nrw-theme
+          ls -la site/
+          ls -la site/themes/
+          ls -la site/themes/lek-nrw-theme
+          ls -la theme-temp/
 
       # 5. Hugo installieren
       - name: Install Hugo
