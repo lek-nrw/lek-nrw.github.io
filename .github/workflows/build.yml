@@ -31,11 +31,6 @@ jobs:
           hugo-version: "0.121.1"
           extended: true
 
-      - name: Copy content
-        run: |
-          rm -rf content
-          cp -R content-repo/ ./
-
       - name: Copy theme
         run: |
           rm -rf themes/lek-nrw-theme
