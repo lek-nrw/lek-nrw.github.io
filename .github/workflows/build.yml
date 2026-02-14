@@ -10,12 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clean up before starting 
-        run: |
-          rm -rf site/
-          ls -la /
-          ls -la /site
-          
+         
       # 1. Website-Repo (für Workflow + Deployment)
       - name: Checkout website repo
         uses: actions/checkout@v3
