@@ -13,18 +13,18 @@ jobs:
          
       # 1. Website-Repo (für Workflow + Deployment)
       - name: Checkout website repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 2. Content-Repo klonen
       - name: Checkout content repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: lek-nrw/lek-nrw-content
           path: site
 
       # 3. Theme ins Content-Repo klonen
       - name: Checkout theme repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: lek-nrw/lek-nrw-theme
           path: theme-temp
