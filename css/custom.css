@@ -42,3 +42,36 @@ footer {
 }
 
 .seo-hidden { display: none; }
+
+
+.toc-container {
+    background-color: #f9f9f9;
+    border-left: 4px solid #cef4be; /* Dein Hellgrün als Akzent */
+    padding: 15px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.toc-container h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+#TableOfContents ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+#TableOfContents li {
+    margin: 5px 0;
+}
+
+#TableOfContents a {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+#TableOfContents a:hover {
+    text-decoration: underline;
+}
